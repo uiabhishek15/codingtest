@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pa="http://primefaces.org/atlas" xmlns:hf="http://highfaces.org">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>Spytutors</title>
+	<h:outputStylesheet library="default" name="css/application.css" />
+
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();"
+			title="login as admin">
+			<p:graphicImage name="images/logout.png" library="default"
+				style="width:10%;height:10%;" />
+		</h:outputLink>
+
+
+		<div class="ui-fluid">
+			<p:dataTable var="user" value="#{json.users}" reflow="true"
+				style="margin-top:20px" rows="10" scrollable="true"
+				scrollWidth="100%" paginator="true" widgetVar="carsTable"
+				filteredValue="#{json.filterusers}"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+            Uninsured Population Census Data CY 2009-2014 Human Services
+            <p:outputPanel>
+						<h:outputText value="Search county:" />
+						<p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()"
+							style="width:150px" placeholder="Enter keyword" />
+					</p:outputPanel>
+				</f:facet>
+				<p:column style="width:80px;" headerText="County"
+					sortBy="#{user.county}" filterBy="#{user.county}">
+					<h:outputText value="#{user.county}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Population"
+					sortBy="#{user.population}">
+					<h:outputText value="#{user.population}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Population MOE"
+					sortBy="#{user.population_MOE}">
+					<h:outputText value="#{user.population_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Uninsured"
+					sortBy="#{user.uninsured}">
+					<h:outputText value="#{user.uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Uninsured MOE"
+					sortBy="#{user.uninsured_MOE}">
+					<h:outputText value="#{user.uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Uninsured Pct"
+					sortBy="#{user.uninsured_Pct}">
+					<h:outputText value="#{user.uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Uninsured Pct MOE"
+					sortBy="#{user.uninsured_Pct_MOE}">
+					<h:outputText value="#{user.uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Population-Under 18 years"
+					sortBy="#{user.population_Under18years}">
+					<h:outputText value="#{user.population_Under18years}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population-Under 18 years MOE"
+					sortBy="#{user.population_Under18years_MOE}">
+					<h:outputText value="#{user.population_Under18years_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population-Under 18 years-Uninsured"
+					sortBy="#{user.population_Under18years_Uninsured}">
+					<h:outputText value="#{user.population_Under18years_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population-Under 18 years-Uninsured MOE"
+					sortBy="#{user.population_Under18years_Uninsured_MOE}">
+					<h:outputText value="#{user.population_Under18years_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population-Under 18 years-Uninsured Pct"
+					sortBy="#{user.population_Under18years_Uninsured_Pct}">
+					<h:outputText value="#{user.population_Under18years_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population-Under 18 years-Uninsured Pct MOE"
+					sortBy="#{user.population_Under18years_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.population_Under18years_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years" sortBy="#{user.uninsured}">
+					<h:outputText value="#{user.uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years MOE"
+					sortBy="#{user.uninsured_MOE}">
+					<h:outputText value="#{user.uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years Uninsured MOE"
+					sortBy="#{user.uninsured_Pct}">
+					<h:outputText value="#{user.uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years Uninsured Pct "
+					sortBy="#{user.uninsured_Pct_MOE}">
+					<h:outputText value="#{user.uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years Uninsured Pct MOE"
+					sortBy="#{user.population_Under18years}">
+					<h:outputText value="#{user.population_Under18years}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population-Under 18 years MOE"
+					sortBy="#{user.population_Under18years_MOE}">
+					<h:outputText value="#{user.population_Under18years_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population-Under 18 years-Uninsured"
+					sortBy="#{user.population_Under18years_Uninsured}">
+					<h:outputText value="#{user.population_Under18years_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - Under 18 years - Uninsured MOE"
+					sortBy="#{user.population_Under18years_Uninsured_MOE}">
+					<h:outputText value="#{user.population_Under18years_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - Under 18 years - Uninsured Pct"
+					sortBy="#{user.population_Under18years_Uninsured_Pct}">
+					<h:outputText value="#{user.population_Under18years_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - Under 18 years - Uninsured Pct MOE"
+					sortBy="#{user.population_Under18years_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.population_Under18years_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years"
+					sortBy="#{user.population_18to64years}">
+					<h:outputText value="#{user.population_18to64years}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years MOE"
+					sortBy="#{user.population_18to64years_MOE}">
+					<h:outputText value="#{user.population_18to64years_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years - Uninsured"
+					sortBy="#{user.population_18to64years_Uninsured}">
+					<h:outputText value="#{user.population_18to64years_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years - Uninsured MOE"
+					sortBy="#{user.population_18to64years_Uninsured_MOE}">
+					<h:outputText value="#{user.population_18to64years_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years - Uninsured Pct"
+					sortBy="#{user.population_18to64years_Uninsured_Pct}">
+					<h:outputText value="#{user.population_18to64years_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 18 to 64 years - Uninsured Pct MOE"
+					sortBy="#{user.population_18to64years_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.population_18to64years_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 65 years and older"
+					sortBy="#{user.population_65yearsandolder}">
+					<h:outputText value="#{user.population_65yearsandolder}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 65 years and older MOE"
+					sortBy="#{user.population_65yearsandolder_MOE}">
+					<h:outputText value="#{user.population_65yearsandolder_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 65 years and older Uninsured"
+					sortBy="#{user.population_65yearsandolder_Uninsured}">
+					<h:outputText value="#{user.population_65yearsandolder_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 65 years and older Uninsured MOE"
+					sortBy="#{user.population_65yearsandolder_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.population_65yearsandolder_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 65 years and older Uninsured Pct"
+					sortBy="#{user.population_65yearsandolder_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.population_65yearsandolder_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 65 years and older Uninsured Pct MOE"
+					sortBy="#{user.population_65yearsandolder_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.population_65yearsandolder_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 19 to 25 years"
+					sortBy="#{user.population_19to25years}">
+					<h:outputText value="#{user.population_19to25years}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 19 to 25 years MOE"
+					sortBy="#{user.population_19to25years_MOE}">
+					<h:outputText value="#{user.population_19to25years_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 19 to 25 years - Uninsured"
+					sortBy="#{user.population_19to25years_Uninsured}">
+					<h:outputText value="#{user.population_19to25years_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 19 to 25 years - Uninsured MOE"
+					sortBy="#{user.population_19to25years_Uninsured_MOE}">
+					<h:outputText value="#{user.population_19to25years_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 19 to 25 years - Uninsured Pct"
+					sortBy="#{user.population_19to25years_Uninsured_Pct}">
+					<h:outputText value="#{user.population_19to25years_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Population - 19 to 25 years - Uninsured Pct MOE"
+					sortBy="#{user.population_19to25years_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.population_19to25years_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Male"
+					sortBy="#{user.male}">
+					<h:outputText value="#{user.male}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Male MOE"
+					sortBy="#{user.male_MOE}">
+					<h:outputText value="#{user.male_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Male - Uninsured"
+					sortBy="#{user.male_Uninsured}">
+					<h:outputText value="#{user.male_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Male - Uninsured MOE"
+					sortBy="#{user.male_Uninsured_MOE}">
+					<h:outputText value="#{user.male_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Male - Uninsured Pct"
+					sortBy="#{user.male_Uninsured_Pct}">
+					<h:outputText value="#{user.male_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Male - Uninsured Pct MOE"
+					sortBy="#{user.male_Uninsured_Pct_MOE}">
+					<h:outputText value="#{user.male_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Female"
+					sortBy="#{user.female}">
+					<h:outputText value="#{user.female}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Female MOE"
+					sortBy="#{user.female_MOE}">
+					<h:outputText value="#{user.female_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Female - Uninsured"
+					sortBy="#{user.female_Uninsured}">
+					<h:outputText value="#{user.female_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Female - Uninsured MOE"
+					sortBy="#{user.female_Uninsured_MOE}">
+					<h:outputText value="#{user.female_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Female - Uninsured Pct"
+					sortBy="#{user.female_Uninsured_Pct}">
+					<h:outputText value="#{user.female_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Female - Uninsured Pct MOE"
+					sortBy="#{user.female_Uninsured_Pct_MOE}">
+					<h:outputText value="#{user.female_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Race - One Race"
+					sortBy="#{user.race_One_Race}">
+					<h:outputText value="#{user.race_One_Race}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Race - One Race MOE"
+					sortBy="#{user.race_One_Race_MOE}">
+					<h:outputText value="#{user.race_One_Race_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Race - One Race-Uninsured"
+					sortBy="#{user.race_One_Race_Uninsured}">
+					<h:outputText value="#{user.race_One_Race_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race-Uninsured MOE"
+					sortBy="#{user.race_One_Race_Uninsured_MOE}">
+					<h:outputText value="#{user.race_One_Race_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race-Uninsured Pct"
+					sortBy="#{user.race_One_Race_Uninsured_Pct}">
+					<h:outputText value="#{user.race_One_Race_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race-Uninsured Pct MOE"
+					sortBy="#{user.race_One_Race_Uninsured_Pct_MOE}">
+					<h:outputText value="#{user.race_One_Race_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Race - One Race - White"
+					sortBy="#{user.race_One_Race_White}">
+					<h:outputText value="#{user.race_One_Race_White}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - White MOE"
+					sortBy="#{user.race_One_Race_White_MOE}">
+					<h:outputText value="#{user.race_One_Race_White_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - White Uninsured"
+					sortBy="#{user.race_One_Race_White_Uninsured}">
+					<h:outputText value="#{user.race_One_Race_White_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - White Uninsured MOE"
+					sortBy="#{user.race_One_Race_White_Uninsured_MOE}">
+					<h:outputText value="#{user.race_One_Race_White_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - White Uninsured Pct "
+					sortBy="#{user.race_One_Race_White_Uninsured_Pct}">
+					<h:outputText value="#{user.race_One_Race_White_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - White Uninsured Pct MOE"
+					sortBy="#{user.race_One_Race_White_Uninsured_Pct_MOE}">
+					<h:outputText value="#{user.race_One_Race_White_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Black or African American"
+					sortBy="#{user.race_One_Race_Black_or_African_American}">
+					<h:outputText
+						value="#{user.race_One_Race_Black_or_African_American}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Black or African American MOE"
+					sortBy="#{user.race_One_Race_Black_or_African_American_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Black_or_African_American_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Black or African American-Uninsured"
+					sortBy="#{user.race_One_Race_Black_or_African_American_Uninsured}">
+					<h:outputText
+						value="#{user.race_One_Race_Black_or_African_American_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Black or African American - Uninsured MOE"
+					sortBy="#{user.race_One_Race_Black_or_African_American_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Black_or_African_American_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Black or African American - Uninsured Pct"
+					sortBy="#{user.race_One_Race_Black_or_African_American_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.race_One_Race_Black_or_African_American_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Black or African American - Uninsured Pct MOE"
+					sortBy="#{user.race_One_Race_Black_or_African_American_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Black_or_African_American_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - American Indian and Alaska Native"
+					sortBy="#{user.race_One_Race_American_Indian_AlaskaNative}">
+					<h:outputText
+						value="#{user.race_One_Race_American_Indian_AlaskaNative}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - American Indian and Alaska Native MOE"
+					sortBy="#{user.race_One_Race_American_Indian_AlaskaNative_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_American_Indian_AlaskaNative_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - American Indian and Alaska Native - Uninsured"
+					sortBy="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured}">
+					<h:outputText
+						value="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - American Indian and Alaska Native - Uninsured MOE"
+					sortBy="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - American Indian and Alaska Native - Uninsured Pct"
+					sortBy="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - American Indian and Alaska Native - Uninsured Pct MOE"
+					sortBy="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_American_Indian_AlaskaNative_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Race - One Race - Asian"
+					sortBy="#{user.race_One_Race_Asian}">
+					<h:outputText value="#{user.race_One_Race_Asian}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Asian MOE"
+					sortBy="#{user.race_One_Race_Asian_MOE}">
+					<h:outputText value="#{user.race_One_Race_Asian_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Asian Uninsured"
+					sortBy="#{user.race_One_Race_Asian_Uninsured}">
+					<h:outputText value="#{user.race_One_Race_Asian_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Asian Uninsured MOE"
+					sortBy="#{user.race_One_Race_Asian_Uninsured_MOE}">
+					<h:outputText value="#{user.race_One_Race_Asian_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Asian Uninsured Pct"
+					sortBy="#{user.race_One_Race_Asian_Uninsured_Pct}">
+					<h:outputText value="#{user.race_One_Race_Asian_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Asian Uninsured Pct MOE"
+					sortBy="#{user.race_One_Race_Asian_Uninsured_Pct_MOE}">
+					<h:outputText value="#{user.race_One_Race_Asian_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Native Hawaiian and Other Pacific Islander"
+					sortBy="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander}">
+					<h:outputText
+						value="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Native Hawaiian and Other Pacific Islander MOE"
+					sortBy="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Native Hawaiian and Other Pacific Islander - Uninsured"
+					sortBy="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured}">
+					<h:outputText
+						value="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Native Hawaiian and Other Pacific Islander - Uninsured MOE"
+					sortBy="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Native Hawaiian and Other Pacific Islander - Uninsured Pct"
+					sortBy="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Native Hawaiian and Other Pacific Islander - Uninsured Pct MOE"
+					sortBy="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Native_Hawaiian_and_Other_PacificIslander_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Some other race"
+					sortBy="#{user.race_One_Race_Some_other_race}">
+					<h:outputText value="#{user.race_One_Race_Some_other_race}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Some other race MOE"
+					sortBy="#{user.race_One_Race_Some_other_race_MOE}">
+					<h:outputText value="#{user.race_One_Race_Some_other_race_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Some other race- Uninsured"
+					sortBy="#{user.race_One_Race_Some_other_race_Uninsured}">
+					<h:outputText
+						value="#{user.race_One_Race_Some_other_race_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Some other race- Uninsured MOE"
+					sortBy="#{user.race_One_Race_Some_other_race_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Some_other_race_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Some other race- Uninsured Pct"
+					sortBy="#{user.race_One_Race_Some_other_race_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.race_One_Race_Some_other_race_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - One Race - Some other race- Uninsured Pct MOE"
+					sortBy="#{user.race_One_Race_Some_other_race_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.race_One_Race_Some_other_race_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Race - Two or more races"
+					sortBy="#{user.race_Two_or_more_races}">
+					<h:outputText value="#{user.race_Two_or_more_races}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - Two or more races MOE"
+					sortBy="#{user.race_Two_or_more_races_MOE}">
+					<h:outputText value="#{user.race_Two_or_more_races_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - Two or more races- Uninsured"
+					sortBy="#{user.race_Two_or_more_races_Uninsured}">
+					<h:outputText value="#{user.race_Two_or_more_races_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - Two or more races- Uninsured MOE"
+					sortBy="#{user.race_Two_or_more_races_Uninsured_MOE}">
+					<h:outputText value="#{user.race_Two_or_more_races_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - Two or more races- Uninsured Pct"
+					sortBy="#{user.race_Two_or_more_races_Uninsured_Pct}">
+					<h:outputText value="#{user.race_Two_or_more_races_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Race - Two or more races- Uninsured Pct MOE"
+					sortBy="#{user.race_Two_or_more_races_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.race_Two_or_more_races_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="White, not Hispanic or Latino"
+					sortBy="#{user.white_not_Hispanic_or_Latino}">
+					<h:outputText value="#{user.white_not_Hispanic_or_Latino}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="White, not Hispanic or Latino MOE"
+					sortBy="#{user.white_not_Hispanic_or_Latino_MOE}">
+					<h:outputText value="#{user.white_not_Hispanic_or_Latino_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="White, not Hispanic or Latino-Uninsured"
+					sortBy="#{user.white_not_Hispanic_or_Latino_Uninsured}">
+					<h:outputText
+						value="#{user.white_not_Hispanic_or_Latino_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="White, not Hispanic or Latino-Uninsured MOE"
+					sortBy="#{user.white_not_Hispanic_or_Latino_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.white_not_Hispanic_or_Latino_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="White, not Hispanic or Latino-Uninsured Pct"
+					sortBy="#{user.white_not_Hispanic_or_Latino_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.white_not_Hispanic_or_Latino_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="White, not Hispanic or Latino-Uninsured Pct MOE"
+					sortBy="#{user.white_not_Hispanic_or_Latino_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.white_not_Hispanic_or_Latino_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Hispanic or Latino (of any race)"
+					sortBy="#{user.hispanic_or_Latino__ofanyrace}">
+					<h:outputText value="#{user.hispanic_or_Latino__ofanyrace}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Hispanic or Latino (of any race) MOE"
+					sortBy="#{user.hispanic_or_Latino__ofanyrace_MOE}">
+					<h:outputText value="#{user.hispanic_or_Latino__ofanyrace_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Hispanic or Latino (of any race) Uninsured"
+					sortBy="#{user.hispanic_or_Latino__ofanyrace_Uninsured}">
+					<h:outputText
+						value="#{user.hispanic_or_Latino__ofanyrace_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Hispanic or Latino (of any race) Uninsured MOE"
+					sortBy="#{user.hispanic_or_Latino__ofanyrace_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.hispanic_or_Latino__ofanyrace_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Hispanic or Latino (of any race) Uninsured Pct "
+					sortBy="#{user.hispanic_or_Latino__ofanyrace_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.hispanic_or_Latino__ofanyrace_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Hispanic or Latino (of any race) Uninsured Pct MOE"
+					sortBy="#{user.hispanic_or_Latino__ofanyrace_Uninsured_Pct_MOE}">
+					<h:outputText
+						value="#{user.hispanic_or_Latino__ofanyrace_Uninsured_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Household Income"
+					sortBy="#{user.household_Income}">
+					<h:outputText value="#{user.household_Income}" />
+				</p:column>
+
+				<p:column style="width:80px;" headerText="Household Income MOE"
+					sortBy="#{user.household_Income_MOE}">
+					<h:outputText value="#{user.household_Income_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income-Uninsured"
+					sortBy="#{user.household_Income_Uninsured}">
+					<h:outputText value="#{user.household_Income_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income- Uninsured MOE"
+					sortBy="#{user.household_Income_Uninsured_MOE}">
+					<h:outputText value="#{user.household_Income_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income- Uninsured Pct"
+					sortBy="#{user.household_Income_Uninsured_Pct}">
+					<h:outputText value="#{user.household_Income_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income- Uninsured Pct MOE"
+					sortBy="#{user.household_Income_Pct_MOE}">
+					<h:outputText value="#{user.household_Income_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - Under $25,000"
+					sortBy="#{user.household_Income_Under_$25000}">
+					<h:outputText value="#{user.household_Income_Under_$25000}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - Under $25,000 MOE"
+					sortBy="#{user.household_Income_Under_$25000_MOE}">
+					<h:outputText value="#{user.household_Income_Under_$25000_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - Under $25,000 - Uninsured"
+					sortBy="#{user.household_Income_Under_$25000_Uninsured}">
+					<h:outputText
+						value="#{user.household_Income_Under_$25000_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - Under $25,000- Uninsured MOE"
+					sortBy="#{user.household_Income_Under_$25000_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.household_Income_Under_$25000_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - Under $25,000- Uninsured Pct"
+					sortBy="#{user.household_Income_Under_$25000_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.household_Income_Under_$25000_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - Under $25,000- Uninsured Pct MOE"
+					sortBy="#{user.household_Income_Under_$25000_Pct_MOE}">
+					<h:outputText value="#{user.household_Income_Under_$25000_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $25,000 to $49,999"
+					sortBy="#{user.household_Income_$25000_to_$49999}">
+					<h:outputText value="#{user.household_Income_$25000_to_$49999}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $25,000 to $49,999 MOE"
+					sortBy="#{user.household_Income_$25000_to_$49999_MOE}">
+					<h:outputText value="#{user.household_Income_$25000_to_$49999_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $25,000 to $49,999 Uninsured"
+					sortBy="#{user.household_Income_$25000_to_$49999_Uninsured}">
+					<h:outputText
+						value="#{user.household_Income_$25000_to_$49999_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $25,000 to $49,999 Uninsured MOE"
+					sortBy="#{user.household_Income_$25000_to_$49999_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$25000_to_$49999_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $25,000 to $49,999 Uninsured Pct"
+					sortBy="#{user.household_Income_$25000_to_$49999_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.household_Income_$25000_to_$49999_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $25,000 to $49,999 Uninsured Pct MOE"
+					sortBy="#{user.household_Income_$25000_to_$49999_Pct_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$25000_to_$49999_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $50,000 to $74,999"
+					sortBy="#{user.household_Income_$50000_to_$74999}">
+					<h:outputText value="#{user.household_Income_$50000_to_$74999}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $50,000 to $74,999 MOE"
+					sortBy="#{user.household_Income_$50000_to_$74999_MOE}">
+					<h:outputText value="#{user.household_Income_$50000_to_$74999_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $50,000 to $74,999 - Uninsured"
+					sortBy="#{user.household_Income_$50000_to_$74999_Uninsured}">
+					<h:outputText
+						value="#{user.household_Income_$50000_to_$74999_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $50,000 to $74,999 - Uninsured MOE"
+					sortBy="#{user.household_Income_$50000_to_$74999_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$50000_to_$74999_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $50,000 to $74,999 - Uninsured Pct"
+					sortBy="#{user.household_Income_$50000_to_$74999_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.household_Income_$50000_to_$74999_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $50,000 to $74,999 - Uninsured Pct MOE"
+					sortBy="#{user.household_Income_$50000_to_$74999_Pct_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$50000_to_$74999_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $75,000 to $99,999"
+					sortBy="#{user.household_Income_$75000_to_$99999}">
+					<h:outputText value="#{user.household_Income_$75000_to_$99999}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $75,000 to $99,999 MOE"
+					sortBy="#{user.household_Income_$75000_to_$99999_MOE}">
+					<h:outputText value="#{user.household_Income_$75000_to_$99999_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $75,000 to $99,999-Uninsured"
+					sortBy="#{user.household_Income_$75000_to_$99999_Uninsured}">
+					<h:outputText
+						value="#{user.household_Income_$75000_to_$99999_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $75,000 to $99,999- Uninsured MOE"
+					sortBy="#{user.household_Income_$75000_to_$99999_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$75000_to_$99999_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $75,000 to $99,999- Uninsured Pct"
+					sortBy="#{user.household_Income_$75000_to_$99999_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.household_Income_$75000_to_$99999_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $75,000 to $99,999- Uninsured Pct MOE"
+					sortBy="#{user.household_Income_$75000_to_$99999_Pct_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$75000_to_$99999_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $100,000 and over"
+					sortBy="#{user.household_Income_$100000_and_over}">
+					<h:outputText value="#{user.household_Income_$100000_and_over}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $100,000 and over MOE"
+					sortBy="#{user.household_Income_$100000_and_over_MOE}">
+					<h:outputText value="#{user.household_Income_$100000_and_over_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $100,000 and over- Uninsured"
+					sortBy="#{user.household_Income_$100000_and_over_Uninsured}">
+					<h:outputText
+						value="#{user.household_Income_$100000_and_over_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $100,000 and over- Uninsured MOE"
+					sortBy="#{user.household_Income_$100000_and_over_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$100000_and_over_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $100,000 and over- Uninsured Pct"
+					sortBy="#{user.household_Income_$100000_and_over_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.household_Income_$100000_and_over_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Household Income - $100,000 and over- Uninsured Pct MOE"
+					sortBy="#{user.household_Income_$100000_and_over_Pct_MOE}">
+					<h:outputText
+						value="#{user.household_Income_$100000_and_over_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level}">
+					<h:outputText value="#{user.ratio_of_Income_to_Poverty_Level}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_MOE}">
+					<h:outputText value="#{user.ratio_of_Income_to_Poverty_Level_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level Uninsured"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Uninsured}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level Uninsured MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level Uninsured Pct"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level Uninsured Pct MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Pct_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - Under 1.38 of poverty"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - Under 1.38 of poverty MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - Under 1.38 of poverty- Uninsured"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Uninsured}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - Under 1.38 of poverty- Uninsured MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - Under 1.38 of poverty- Uninsured Pct"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - Under 1.38 of poverty- Uninsured Pct MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Pct_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_Under_1._38_of_poverty_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 1.38 to 1.99 of poverty"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 1.38 to 1.99 of poverty MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 1.38 to 1.99 of poverty-Uninsured"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_Uninsured}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 1.38 to 1.99 of poverty- Uninsured MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 1.38 to 1.99 of poverty- Uninsured Pct"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.household_Income_$75000_to_$99999_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 1.38 to 1.99 of poverty- Uninsured Pct MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_Pct_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_1._38_to_1._99_of_poverty_Pct_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 2.00 of poverty and over"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 2.00 of poverty and over MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 2.00 of poverty and over- Uninsured"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Uninsured}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Uninsured}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 2.00 of poverty and over- Uninsured MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Uninsured_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Uninsured_MOE}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 2.00 of poverty and over- Uninsured Pct"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Uninsured_Pct}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Uninsured_Pct}" />
+				</p:column>
+
+				<p:column style="width:80px;"
+					headerText="Ratio of Income to Poverty Level - 2.00 of poverty and over- Uninsured Pct MOE"
+					sortBy="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Pct_MOE}">
+					<h:outputText
+						value="#{user.ratio_of_Income_to_Poverty_Level_2._00_of_poverty_and_over_Pct_MOE}" />
+				</p:column>
+
+				<!-- <p:column style="width:80px;" headerText="Location 1" sortBy="#{user.location1}">
+            <h:outputText value="#{user.location1}" />
+        </p:column> -->
+
+
+			</p:dataTable>
+		</div>
+  <p:panelGrid columns="2">
+                    <h:outputLabel for="item" value="Item Name: " />
+                    <p:inputText  value="#{item.item}"/>
+                    <h:outputLabel for="qty" value="Qyantity: " />
+                    <p:inputText value="#{item.qty}"/>
+                    <h:outputLabel for="price" value="Price: " />
+                    <p:inputText  value="#{item.price}"/>
+                    <f:facet name="footer">
+                        <h:commandButton value="Add Item" action="#{item.addAction}"/>
+                    </f:facet>
+                </p:panelGrid>
+		<!-- Heat map for the Uninsured and Population per county -->
+		<!-- <hf:heatmap type="heatmap" value="#{json.users}" var="user"
+			showDataLabel="true" style="margin-top:140px;"
+			point="#{user.population}" xvalue="#{user.county}"
+			yvalue="#{user.uninsured}" min="0" xaxisLabel="County" height="100%"
+			title="Uninsured Population Vs Population per county" minColor="#FFF"
+			maxColor="#FF6600" borderWidth="2" width="100%" /> -->
+
+
+	</h:form>
+
+
+</h:body>
+
+</html>

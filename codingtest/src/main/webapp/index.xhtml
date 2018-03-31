@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pa="http://primefaces.org/atlas" xmlns:hf="http://highfaces.org">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>Spytutors</title>
+	<h:outputStylesheet library="default" name="css/application.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form id="form1">
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="sku1" var="user" value="#{json.users}"
+			editable="true" style="margin-bottom:20px">
+			<f:facet name="header">
+           Row Editing
+       </f:facet>
+
+			<p:ajax event="rowEdit" listener="#{json.onEdit}"
+				update=":form1:msgs" />
+			<p:ajax event="rowEditCancel" listener="#{json.onCancel}"
+				update=":form1:msgs" />
+
+			<p:column headerText="SKU">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{user.sku}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput" value="#{user.sku}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="NAME">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{user.name}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{user.name}" style="width:100%" label="Name" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+				<p:column headerText="LOCATION">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{user.location}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput1" value="#{user.location}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="DEPARTMENT">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{user.department}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{user.department}" style="width:100%" label="Department" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+				<p:column headerText="CATEGORY">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{user.category}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput2" value="#{user.category}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="SUBCATEGORY">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{user.subcategory}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{user.subcategory}" style="width:100%" label="Subcategory" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column style="width:32px">
+				<p:rowEditor />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+
+		<div class="ui-fluid">
+			<p:panelGrid columns="1" layout="grid">
+				<p:scrollPanel style="width:100%;height:100%">
+					<p:diagram value="#{diagramHierarchicalView.model}"
+						style="height:600px;margintop:10px;"
+						styleClass="ui-widget-content" />
+				</p:scrollPanel>
+			</p:panelGrid>
+		</div>
+
+
+</h:body>
+
+</html>

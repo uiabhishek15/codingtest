@@ -1,0 +1,83 @@
+   /*** XML URL - http://api.geonames.org/countryInfo?continentCode=EU&username=srikanthankem ***/
+	  <countryCode>AD</countryCode>
+       <countryName>Andorra</countryName>
+       <isoNumeric>020</isoNumeric>
+       <isoAlpha3>AND</isoAlpha3>
+       <fipsCode>AN</fipsCode>
+       <continent>EU</continent>
+       <continentName>Europe</continentName>
+       <capital>Andorra la Vella</capital>
+       <areaInSqKm>468.0</areaInSqKm>
+       <population>84000</population>
+       <currencyCode>EUR</currencyCode>
+       <languages>ca</languages>
+       <geonameId>3041565</geonameId>
+       <west>1.4071867141112762</west>
+       <north>42.65604389629997</north>
+       <east>1.7865427778319827</east>
+       <south>42.42849259876837</south>
+       <postalCodeFormat>AD###</postalCodeFormat>
+       
+    /*** JSON URL - http://api.geonames.org/countryInfoJSON?continentCode=EU&username=srikanthankem ***/
+       {
+       "countryName":"Andorra",
+       "currencyCode":"EUR",
+       "fipsCode":"AN",
+       "countryCode":"AD",
+       "isoNumeric":"020",
+       "north":42.65604389629997,
+       "capital":"Andorra la Vella",
+       "continentName":"Europe",
+       "areaInSqKm":"468.0",
+       "languages":"ca",
+       "isoAlpha3":"AND",
+       "continent":"EU",
+       "south":42.42849259876837,
+       "east":1.7865427778319827,
+       "geonameId":3041565,
+       "west":1.4071867141112762,
+       "population":"84000"}
+	
+	** +++++++ Continent list Hardcoded ++++++ **
+	
+	 AF : Africa			geonameId=6255146
+    AS : Asia			    geonameId=6255147
+    EU : Europe			geonameId=6255148
+    NA : North America		geonameId=6255149
+    OC : Oceania			geonameId=6255151
+    SA : South America		geonameId=6255150
+    AN : Antarctica		geonameId=6255152
+	 
+  /*** States XML URL - http://api.geonames.org/children?geonameId=1269750&username=srikanthankem ***/
+	  <geoname>
+       <toponymName>State of Andhra Pradesh</toponymName>
+       <name>Andhra Pradesh</name>
+       <lat>15.83333</lat>
+        <lng>79.75</lng>
+        <geonameId>1278629</geonameId>
+        <countryCode>IN</countryCode>
+       <countryName>India</countryName>
+       <fcl>A</fcl>
+       <fcode>ADM1</fcode>
+       <numberOfChildren>13</numberOfChildren>
+       </geoname>
+	  
+	/*** JSON URL -http://api.geonames.org/childrenJSON?geonameId=1269750&username=srikanthankem ***/
+	   {"adminCode1":"02",
+	               "lng":"79.75",
+	               "geonameId":1278629,
+	               "toponymName":"State of Andhra Pradesh",
+	               "countryId":"1269750",
+	               "fcl":"A",
+	               "population":49386799,
+	               "numberOfChildren":13,
+	               "countryCode":"IN",
+	               "name":"Andhra Pradesh",
+	               "fclName":"country, state, region,...",
+	               "countryName":"India",
+	               "fcodeName":"first-order administrative division",
+	               "adminName1":"Andhra Pradesh",
+	               "lat":"15.83333",
+	               "fcode":"ADM1"}
+	
+	

@@ -1,0 +1,112 @@
+.countrybtn .ui-button-text {
+	background-color: #FA0076 !important;
+}
+
+.chooseyourcountryonemenu.ui-selectonemenu .ui-selectonemenu-trigger {
+	height: 32px !important;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.labelredstyle {
+	width: 200px;
+	font-family: 'Nunito', sans-serif;
+	color: red !important;
+}
+
+.requiredStyle {
+	color: #B94A48 !important;
+	vertical-align: text-top;
+}
+
+.labelstyle {
+	width: 200px;
+	font-family: 'Nunito', sans-serif;
+	color: #191970 !important;
+}
+
+
+.labelcolumn td .ui-panelgrid-cell {
+	width: 200px !important;
+}
+
+.messageinfo .ui-messages-info, .ui-message-info {
+	font-size: 10px !important;
+	padding: 2px !important;
+	margin: 0px 0px;
+	width: 170px;
+}
+
+.smalllabelstyle {
+	width: 138px;
+	font-family: 'Courgette', cursive;
+	color: #4169E1 !important;
+}
+
+.signupselectonemenu.ui-selectonemenu .ui-selectonemenu-trigger {
+	padding: 1px 20px !important;
+}
+
+.signuppanlegrid.ui-grid-col-6 {
+	width: 30% !important;
+}
+
+.captchabox {
+	width: 80px !important;
+	height: 30px !important;
+	background-color: #a3c2db !important;
+	border: solid 1px #a3c2db !important;
+	text-align: center !important;
+	font-size: 22px !important;
+	text-decoration: line-through !important;
+	font-family: 'Freckle Face', cursive;
+}
+
+.headerlabelstyle {
+	font-family: 'Nunito', sans-serif;
+	color: #191970 !important;
+}
+
+@media ( min-width : 600px) {
+	.captcha {
+		margin: -45px 0px 0px 229px;
+		width: 300px;
+	}
+}
+
+.captchaoutputlabel label{
+	margin-left:100px;
+}
+
+
+/* .ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+    width:150px;
+} */
+
+
+.ui-datatable .ui-datatable-data td {
+    border-bottom: white;
+    border-right: white;
+}
+
+ .ui-diagram-element {   
+        width:10em; 
+        height:5em;
+        line-height:5em;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+        border-radius: 5em;
+        border: 1px solid #404a4e;
+        background-color: #404a4e;
+        color: #cccccc;
+    }
+ 
+    .ui-diagram-element:hover {
+        background-color: #20282b;
+    }
