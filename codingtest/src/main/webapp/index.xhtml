@@ -25,15 +25,21 @@
 		<p:growl id="msgs" showDetail="true" />
 
 		<p:dataTable id="sku1" var="user" value="#{json.users}"
-			editable="true" style="margin-bottom:20px">
+			widgetVar="cellCars" editable="true" style="margin-bottom:20px" rowIndexVar="index"
+			editMode="cell">
 			<f:facet name="header">
            Row Editing
        </f:facet>
 
-			<p:ajax event="rowEdit" listener="#{json.onEdit}"
+			<!-- <p:ajax event="rowEdit" listener="#{json.onEdit}"
 				update=":form1:msgs" />
 			<p:ajax event="rowEditCancel" listener="#{json.onCancel}"
+				update=":form1:msgs" /> -->
+				<!-- <p:ajax event="rowSelect" listener="#{json.onCellEdit}" /> -->
+			<p:ajax event="cellEdit" listener="#{json.onCellEdit}"
 				update=":form1:msgs" />
+			<!--<p:ajax event="cellEdit" listener="#{json.onRowSelect}" />
+			 And this will be updated as second. -->
 
 			<p:column headerText="SKU">
 				<p:cellEditor>
@@ -41,7 +47,7 @@
 						<h:outputText value="#{user.sku}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText id="modelInput" value="#{user.sku}" style="width:100%" />
+						<p:inputText id="sku" value="#{user.sku}" style="width:100%" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -52,18 +58,20 @@
 						<h:outputText value="#{user.name}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{user.name}" style="width:100%" label="Name" />
+						<p:inputText id="name" value="#{user.name}" style="width:100%"
+							label="Name" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
 
-				<p:column headerText="LOCATION">
+			<p:column headerText="LOCATION">
 				<p:cellEditor>
 					<f:facet name="output">
 						<h:outputText value="#{user.location}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText id="modelInput1" value="#{user.location}" style="width:100%" />
+						<p:inputText id="location" value="#{user.location}"
+							style="width:100%" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -74,18 +82,20 @@
 						<h:outputText value="#{user.department}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{user.department}" style="width:100%" label="Department" />
+						<p:inputText id="department" value="#{user.department}"
+							style="width:100%" label="Department" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
-			
-				<p:column headerText="CATEGORY">
+
+			<p:column headerText="CATEGORY">
 				<p:cellEditor>
 					<f:facet name="output">
 						<h:outputText value="#{user.category}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText id="modelInput2" value="#{user.category}" style="width:100%" />
+						<p:inputText id="category" value="#{user.category}"
+							style="width:100%" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -96,27 +106,33 @@
 						<h:outputText value="#{user.subcategory}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{user.subcategory}" style="width:100%" label="Subcategory" />
+						<p:inputText id="subcategory" value="#{user.subcategory}"
+							style="width:100%" label="Subcategory" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
-			
-			<p:column style="width:32px">
+
+			<!-- <p:column style="width:32px">
 				<p:rowEditor />
-			</p:column>
+			</p:column> -->
 		</p:dataTable>
+		<p:contextMenu for="sku1" widgetVar="cMenu">
+			<p:menuitem value="Edit Cell" icon="ui-icon-search"
+				onclick="PF('cellCars').showCellEditor();return false;" />
+			<p:menuitem value="Hide Menu" icon="ui-icon-close"
+				onclick="PF('cMenu').hide()" />
+		</p:contextMenu>
 	</h:form>
 
 
-		<div class="ui-fluid">
-			<p:panelGrid columns="1" layout="grid">
-				<p:scrollPanel style="width:100%;height:100%">
-					<p:diagram value="#{diagramHierarchicalView.model}"
-						style="height:600px;margintop:10px;"
-						styleClass="ui-widget-content" />
-				</p:scrollPanel>
-			</p:panelGrid>
-		</div>
+	<div class="ui-fluid">
+		<p:panelGrid columns="1" layout="grid">
+			<p:scrollPanel style="width:100%;height:100%">
+				<p:diagram value="#{diagramHierarchicalView.model}"
+					style="height:600px;margintop:10px;" styleClass="ui-widget-content" />
+			</p:scrollPanel>
+		</p:panelGrid>
+	</div>
 
 
 </h:body>
