@@ -97,110 +97,24 @@ public class UserRestController {
 		return mapper.writeValueAsString(sku);
 
 	}
-
-	/*@RequestMapping(value = "/api/v1/location/updatedata/{name}/{location}/{department}/{category}/{subcategory}", method = RequestMethod.PUT)
-	public ResponseEntity<SKU> updateUser(@PathVariable("name") String name,
-			@PathVariable("location") String location,
-			@PathVariable("department") String department,
-			@PathVariable("category") String category,
-			@PathVariable("subcategory") String subcategory,
-			@RequestBody SKU user) {
-		System.out.println("Updating User " + name);
-
-		SKU currentUser = userRepository.update(name, location, department, category, subcategory, user);
-
-		if (currentUser == null) {
-			System.out.println("User with id " + name + " not found");
-			return new ResponseEntity<SKU>(HttpStatus.NOT_FOUND);
-		}
-
-		currentUser.setName(user.getName());
-		currentUser.setAge(user.getAge());
-		currentUser.setSalary(user.getSalary());
-
-		userService.updateUser(currentUser);
-		return new ResponseEntity<SKU>(currentUser, HttpStatus.OK);
-	}*/
 	
-	@RequestMapping(value = "/api/v1/location/updatedata/{name}/{location}/{department}/{category}/{subcategory}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/api/v1/location/updatedata/{name}/{location}/{updatekey}", method = RequestMethod.PUT)
 	@ResponseBody
-	public BasicResponse updatePersonByName(@PathVariable("name") String name,
+	public void updatePersonByName(@PathVariable("name") String name,
 			@PathVariable("location") String location,
-			@PathVariable("department") String department,
-			@PathVariable("category") String category,
-			@PathVariable("subcategory") String subcategory,
+			@PathVariable("updatekey") String updatekey,
 			@ModelAttribute("sku") SKU sku) {
 		LOGGER.info("updateskuByName()...");
-		BasicResponse resp;
-		SKU mysku = userRepository.update(name, location, department, category,
-				subcategory, sku);
+		//BasicResponse resp;
+		SKU mysku = userRepository.update(name, location, updatekey, sku);
 		if (mysku != null) {
 			LOGGER.info("updated: " + mysku.toString());
-			resp = new BasicResponse(true, "Successfully updated Person: " + mysku.toString());
+			//resp = new BasicResponse(true, "Successfully updated Person: " + mysku.toString());
 		} else {
 			LOGGER.info("name: " + name + ", NOT FOUND!");
-			resp = new BasicResponse(false, "Failed to update Person: " + name);
+			//resp = new BasicResponse(false, "Failed to update Person: " + name);
 		}
 		LOGGER.info("...updatePersonByName()");
-		return resp;
+		
 	}
-
-	/*@RequestMapping(value = "/api/v1/location/updatedata/{name}/{location}/{department}/{category}/{subcategory}", method = RequestMethod.PUT)
-	public @ResponseBody ResponseEntity<SKU> updateImageMetadata(
-			@PathVariable("name") String name,
-			@PathVariable("location") String location,
-			@PathVariable("department") String department,
-			@PathVariable("category") String category,
-			@PathVariable("subcategory") String subcategory,
-			@ModelAttribute("sku") SKU sku) {
-		// BasicResponse extResp;
-		// password = BCrypt.hashpw(password, BCrypt.gensalt(12));
-		SKU mySKU = userRepository.update(name, location, department, category,
-				subcategory, sku);
-
-		if (mySKU != null) {
-			LOGGER.info("Inside updateTutorByOTP, updated: " + mySKU.getName()
-					+ mySKU.getLocation() + mySKU.getDepartment());
-			return new ResponseEntity<SKU>(HttpStatus.OK);
-		} else {
-			LOGGER.info("Inside updateIssuerByTicker, ticker: " + name
-					+ ", NOT FOUND!");
-			return new ResponseEntity<SKU>(HttpStatus.NOT_FOUND);
-			
-			 * extResp = new BasicResponse(false, "Failed to update ticker: " +
-			 * mySKU);
-			 
-		}
-	}
-*/
-	/*
-	 * @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT) public
-	 * ResponseEntity<SKU> updateUser(@PathVariable("id") long id, @RequestBody
-	 * User user) { System.out.println("Updating User " + id);
-	 * 
-	 * User currentUser = userService.findById(id);
-	 * 
-	 * if (currentUser==null) { System.out.println("User with id " + id +
-	 * " not found"); return new ResponseEntity<User>(HttpStatus.NOT_FOUND); }
-	 * 
-	 * currentUser.setName(user.getName()); currentUser.setAge(user.getAge());
-	 * currentUser.setSalary(user.getSalary());
-	 * 
-	 * userService.updateUser(currentUser); return new
-	 * ResponseEntity<User>(currentUser, HttpStatus.OK); }
-	 */
-
-	/*
-	 * @RequestMapping(value = "/login/{username}/{password}", method =
-	 * RequestMethod.GET,produces="application/json") public @ResponseBody
-	 * String login(@PathVariable("username") String
-	 * username,@PathVariable("password") String password) throws
-	 * JsonProcessingException {
-	 * LOGGER.info("loginning as ..."+"------"+username); Boolean isLogin =
-	 * userRepository.Login(username, password); ObjectMapper mapper = new
-	 * ObjectMapper(); return mapper.writeValueAsString(isLogin);
-	 * 
-	 * }
-	 */
-
 }

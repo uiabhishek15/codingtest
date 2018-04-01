@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import static org.springframework.data.mongodb.core.query.Criteria.*;
 import org.springframework.stereotype.Repository;
 
 import com.uninsured.data.entity.Admin;
@@ -62,19 +63,18 @@ public class UserRepository {
 		return searchbylocation;
 	}
 	
-	public SKU update(String name,String location,String department,String category,String subCategory,SKU sku){
+	public SKU update(String name,String updateVar,String updateKey,SKU sku){
 		Query query = new Query();
 		query.addCriteria(Criteria.where("NAME").is(name));
 
-		//SKU sku1 = mongoOperations.findOne(query, SKU.class);
-		Update update = new Update();
-		//modify and update with save()
-		update.set("NAME",name);
-		update.set("LOCATION",location);
-		update.set("DEPARTMENT",department);
-		update.set("CATEGORY",category);
-		update.set("SUBCATEGORY",subCategory);
-		mongoOperations.updateFirst(query, update, SKU.class);
+		SKU sku1 = mongoOperations.findOne(query, SKU.class);
+		Update u = new Update();
+		u.set("LOCATION", updateVar);
+		
+		mongoOperations.updateFirst(query, u, SKU.class);
+
+		System.out.println("userTest1_1 - " + sku1);
+
 		return sku;
 	}
 	
@@ -86,20 +86,5 @@ public class UserRepository {
 	        return sku;
 	}
 
-	/*public Boolean Login(String username, String password) {
-
-		Criteria criteria = new Criteria();
-		criteria.andOperator(Criteria.where("username").is(username),Criteria.where("password").is(password));
-        Query query = new Query(criteria);
-        Admin admin = mongoOperations.findOne(query, Admin.class);
-        String dbPassword = admin.getPassword();
-        if(mongoOperations.findOne(query, Admin.class) != null) {
-			return true;
-		}
-        else
-        {
-        	return false;
-        }
-
-	}*/
+	
 }
