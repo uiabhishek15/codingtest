@@ -7,7 +7,9 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+
 import static org.springframework.data.mongodb.core.query.Criteria.*;
+
 import org.springframework.stereotype.Repository;
 
 import com.uninsured.data.entity.Admin;
@@ -69,22 +71,56 @@ public class UserRepository {
 
 		SKU sku1 = mongoOperations.findOne(query, SKU.class);
 		Update u = new Update();
-		u.set("LOCATION", updateVar);
+		switch(updateKey){    
+		case "SKU":    
+			u.set("SKU", updateVar);
+		 break;  
+		case "NAME":    
+			u.set("SKU", updateVar);   
+		 break;
+		case "LOCATION":    
+			u.set("LOCATION", updateVar);
+		 break;   
+		case "DEPARTMENT":    
+			u.set("DEPARTMENT", updateVar);  
+		 break;  
+		case "CATEGORY":    
+			u.set("CATEGORY", updateVar);
+		 break;  
+		case "SUBCATEGORY":    
+			u.set("SUBCATEGORY", updateVar);    
+		 break;  
+		}
+		//u.set("LOCATION", updateVar);
 		
 		mongoOperations.updateFirst(query, u, SKU.class);
 
-		System.out.println("userTest1_1 - " + sku1);
+		System.out.println("userTest1_1 - " + sku1.getName());
 
 		return sku;
 	}
-	
-	public SKU findbyname(String name){
-		 Query query = new Query();
-		 query.addCriteria(Criteria.where("NAME").is(name));
-	        // Execute the query and find one matching entry
-	        SKU sku = mongoOperations.findOne(query, SKU.class);
-	        return sku;
+
+	public SKU save(String sku, String name, String location,
+			String department, String category, String subcategory, SKU sku1) {
+		SKU newSku = new SKU();
+		newSku.setSku(sku);
+		newSku.setName(name);
+		newSku.setLocation(location);
+		newSku.setDepartment(department);
+		newSku.setCategory(category);
+		newSku.setSubcategory(subcategory);
+		mongoOperations.save(newSku);
+		return newSku;
 	}
 
-	
+	public SKU deleteSku(String name) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("NAME").is(name));
+
+		SKU sku1 = mongoOperations.findOne(query, SKU.class);
+		mongoOperations.remove(sku1);
+		
+
+		return sku1;
+	}
 }

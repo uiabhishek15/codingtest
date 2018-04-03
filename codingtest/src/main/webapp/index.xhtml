@@ -14,108 +14,142 @@
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 	</f:facet>
-	<title>Spytutors</title>
+	<title>CodingTest</title>
 	<h:outputStylesheet library="default" name="css/application.css" />
 
 </h:head>
 
 <h:body>
-
 	<h:form id="form1">
+		<div class="ui-fluid">
+		<h3>Add new SKU</h3>
+			<!-- <p:panel id="panelform" header="Add new SKU" style="width: 400px;"> -->
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"
+				layout="grid" styleClass="ui-panelgrid-blank">
+				<h:outputLabel for="sku" value="SKU: " />
+				<p:inputText value="#{userbean.sku}">
+				</p:inputText>
+				<h:outputLabel for="name" value="NAME: " />
+				<p:inputText value="#{userbean.name}">
+				</p:inputText>
+				<h:outputLabel for="location" value="LOCATION: " />
+				<p:inputText value="#{userbean.location}">
+				</p:inputText>
+				<h:outputLabel for="department" value="DEPARTMENT: " />
+				<p:inputText value="#{userbean.department}">
+				</p:inputText>
+				<h:outputLabel for="category" value="CATEGORY: " />
+				<p:inputText value="#{userbean.category}">
+				</p:inputText>
+				<h:outputLabel for="subcategory" value="SUBCATEGORY: " />
+				<p:inputText value="#{userbean.subcategory}">
+				</p:inputText>
+				<f:facet name="footer">
+					<p:commandButton value="Add SKU" action="#{userbean.addAction()}"
+						update="sku1">
+					</p:commandButton>
+				</f:facet>
+			</p:panelGrid>
+		</div>
+
+		<p:spacer height="30px;" />
+
 		<p:growl id="msgs" showDetail="true" />
 
-		<p:dataTable id="sku1" var="user" value="#{json.users}"
-			widgetVar="cellCars" editable="true" style="margin-bottom:20px" rowIndexVar="index"
-			editMode="cell">
-			<f:facet name="header">
+		<div class="ui-fluid">
+			<p:dataTable id="sku1" var="user" value="#{json.users}" reflow="true"
+				widgetVar="cellCars" editable="true" style="margin-bottom:20px"
+				rowIndexVar="index" editMode="cell" rows="10" paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15" rowKey="#{user.sku}">
+				<f:facet name="header">
            Row Editing
        </f:facet>
 
-			<!-- <p:ajax event="rowEdit" listener="#{json.onEdit}"
-				update=":form1:msgs" />
-			<p:ajax event="rowEditCancel" listener="#{json.onCancel}"
-				update=":form1:msgs" /> -->
-				<!-- <p:ajax event="rowSelect" listener="#{json.onCellEdit}" /> -->
-			<p:ajax event="cellEdit" listener="#{json.onCellEdit}"
-				update=":form1:msgs" />
-			<!--<p:ajax event="cellEdit" listener="#{json.onRowSelect}" />
-			 And this will be updated as second. -->
+				<p:ajax event="cellEdit" listener="#{json.onCellEdit}"
+					update=":form1:msgs" />
 
-			<p:column headerText="SKU">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{user.sku}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="sku" value="#{user.sku}" style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
+				<p:column headerText="SKU">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.sku}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="sku" value="#{user.sku}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<p:column headerText="NAME">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{user.name}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="name" value="#{user.name}" style="width:100%"
-							label="Name" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
+				<p:column headerText="NAME">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.name}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="name" value="#{user.name}" style="width:100%"
+								label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<p:column headerText="LOCATION">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{user.location}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="location" value="#{user.location}"
-							style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
+				<p:column headerText="LOCATION">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.location}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="location" value="#{user.location}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<p:column headerText="DEPARTMENT">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{user.department}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="department" value="#{user.department}"
-							style="width:100%" label="Department" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
+				<p:column headerText="DEPARTMENT">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.department}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="department" value="#{user.department}"
+								style="width:100%" label="Department" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<p:column headerText="CATEGORY">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{user.category}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="category" value="#{user.category}"
-							style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
+				<p:column headerText="CATEGORY">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.category}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="category" value="#{user.category}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<p:column headerText="SUBCATEGORY">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{user.subcategory}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="subcategory" value="#{user.subcategory}"
-							style="width:100%" label="Subcategory" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
+				<p:column headerText="SUBCATEGORY">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.subcategory}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="subcategory" value="#{user.subcategory}"
+								style="width:100%" label="Subcategory" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<!-- <p:column style="width:32px">
-				<p:rowEditor />
-			</p:column> -->
-		</p:dataTable>
+				<p:column headerText="Delete">
+
+					<h:outputText value="" />
+					<p:commandButton icon="ui-icon-close" title="remove from table"
+						actionListener="#{json.removeItem(user)}" update=":form1:sku1" />
+
+				</p:column>
+
+			</p:dataTable>
+		</div>
 		<p:contextMenu for="sku1" widgetVar="cMenu">
 			<p:menuitem value="Edit Cell" icon="ui-icon-search"
 				onclick="PF('cellCars').showCellEditor();return false;" />

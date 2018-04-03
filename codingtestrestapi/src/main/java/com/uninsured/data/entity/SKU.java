@@ -2,6 +2,8 @@ package com.uninsured.data.entity;
 
 import java.io.Serializable;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,6 +15,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class SKU implements Serializable{
 
 	private static final long serialVersionUID = 1103350484894685667L;
+	
+	@Id
+	private ObjectId id;
 	
 	@Field("SKU")
 	private String sku;	
@@ -31,6 +36,14 @@ public class SKU implements Serializable{
 	
 	@Field("SUBCATEGORY")
 	private String subcategory;
+
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
 
 	public String getSku() {
 		return sku;

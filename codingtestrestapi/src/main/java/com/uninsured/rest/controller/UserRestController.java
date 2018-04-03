@@ -105,16 +105,52 @@ public class UserRestController {
 			@PathVariable("updatekey") String updatekey,
 			@ModelAttribute("sku") SKU sku) {
 		LOGGER.info("updateskuByName()...");
-		//BasicResponse resp;
+	
 		SKU mysku = userRepository.update(name, location, updatekey, sku);
 		if (mysku != null) {
 			LOGGER.info("updated: " + mysku.toString());
-			//resp = new BasicResponse(true, "Successfully updated Person: " + mysku.toString());
 		} else {
 			LOGGER.info("name: " + name + ", NOT FOUND!");
-			//resp = new BasicResponse(false, "Failed to update Person: " + name);
 		}
 		LOGGER.info("...updatePersonByName()");
 		
+	}
+	
+	@RequestMapping(value = "/api/v1/location/newsku/{sku}/{name}/{location}/{department}/{category}/{subcategory}", method = RequestMethod.POST)
+	@ResponseBody
+	public void updatePersonByName(@PathVariable("sku") String sku,@PathVariable("name") String name,
+			@PathVariable("location") String location,
+			@PathVariable("department") String department,
+			@PathVariable("category") String category,
+			@PathVariable("subcategory") String subcategory,
+			@ModelAttribute("sku") SKU sku1) {
+		LOGGER.info("save new SKU()...");
+		
+		SKU mysku = userRepository.save(sku, name, location, department, category, subcategory, sku1);
+		if (mysku != null) {
+			LOGGER.info("save: " + mysku.toString());
+		} else {
+			LOGGER.info("name: " + name + ", NOT FOUND!");
+		}
+		LOGGER.info("...updatePersonByName()");
+		
+	}
+	
+	@RequestMapping(value = "/api/v1/location/delete/{name}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public void deleteSkubyname(
+			@PathVariable("name") String name) {
+
+		SKU mysku = userRepository.deleteSku(name);
+
+		if (mysku != null) {
+			LOGGER.info("Inside deleteIssuerByTicker, deleted: "
+					+ mysku.getName());
+
+		} else {
+			LOGGER.info("Inside deleteIssuerByTicker, ticker: " + mysku.getName()
+					+ ", NOT FOUND!");
+
+		}
 	}
 }
