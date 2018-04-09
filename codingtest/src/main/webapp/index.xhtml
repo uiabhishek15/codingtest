@@ -63,7 +63,7 @@
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15" rowKey="#{user.sku}">
 				<f:facet name="header">
-           Row Editing
+           SKU in Retail store
        </f:facet>
 
 				<p:ajax event="cellEdit" listener="#{json.onCellEdit}"
@@ -80,7 +80,7 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="NAME">
+				<p:column headerText="NAME" filterBy="#{user.name}" filterMatchMode="contains">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{user.name}" />
@@ -92,7 +92,7 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="LOCATION">
+				<p:column headerText="LOCATION" filterBy="#{user.location}" filterMatchMode="contains">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{user.location}" />
@@ -104,7 +104,7 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="DEPARTMENT">
+				<p:column headerText="DEPARTMENT" filterBy="#{user.department}" filterMatchMode="contains">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{user.department}" />
@@ -116,7 +116,7 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="CATEGORY">
+				<p:column headerText="CATEGORY" filterBy="#{user.category}" filterMatchMode="contains">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{user.category}" />
@@ -128,7 +128,7 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="SUBCATEGORY">
+				<p:column headerText="SUBCATEGORY" filterBy="#{user.subcategory}" filterMatchMode="contains">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{user.subcategory}" />
